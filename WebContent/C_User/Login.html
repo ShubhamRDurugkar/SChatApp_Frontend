@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Login</title>
+
+<meta name="description"
+	content="Source code generated using layoutit.com">
+<meta name="author" content="LayoutIt!">
+
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/style.css" rel="stylesheet">
+
+
+</head>
+<body>
+
+	<div class="container-fluid" ng-controller="UserController">
+		<div class="row">
+			<div class="col-md-12">
+				<form role="form">
+					<div class="form-group">
+
+						<label for="loginname"> Email address </label> <input
+							type="loginname" ng-model="user.loginname" class="form-control" id="loginname">
+					</div>
+					<div class="form-group">
+
+						<label for="password"> Password </label> <input
+							type="password" ng-model="user.password" class="form-control" id="password">
+					</div>
+		
+					<button type="submit" class="btn btn-primary" value="login" ng-click="login()">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/scripts.js"></script>
+	<script src="/UserController.js"></script>
+
+</body>
+</html>
