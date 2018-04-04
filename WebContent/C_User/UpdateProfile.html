@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="container-fluid" ng-controller="UserController">
+		<div class="row">
+			<div class="col-md-12">
+				<form enctype="multipart/form-data" method="post"  action="http://localhost:8083/SChatMiddleWare/doUpload">
+					<div class="form-group">
+					<div class="row">
+					<label for="profilePicture"> Choose Profile Picture </label> 
+					<input type="file" placeholder="Select picture" class="form-control" name="file" id="image">
+					</div>
+					<button type="submit" class="btn btn-primary">Upload Profile Picture</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/scripts.js"></script>
+	<script src="/UserController.js"></script>
+
+</body>
+</html>

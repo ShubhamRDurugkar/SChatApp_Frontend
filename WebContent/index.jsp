@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -7,14 +8,31 @@
 
 <title>SChatApp</title>
 <script src="js/angular.js"></script>
-<script src="js/angular-route.js"></script>
+<script type="text/javascript" src="js/angular-route.js"></script>
 <script src="js/MyRouteConfig.js"></script>
 <script src="C_Blog/BlogController.js"></script>
 <script src="C_User/UserController.js"></script>
+
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- JQuery Js -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Bootstrap Js -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.js"></script>
+
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
+
+
 <style>
 item {
 	height: 100%;
@@ -52,32 +70,49 @@ footer {
 					<div class="collapse navbar-collapse"
 						id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="#!Home">Home</a></li>
+							<li class="active"><a href="#!">Home</a></li>
 							<li
-								ng-hide="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a
-								href="#!Login">Login</a></li>
+								ng-hide="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'">
+								<a href="#!Login">Login</a>
+							</li>
+							<li><a href="#!Blog">Blog</a></li>
 							<li
-								ng-hide="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a href="#!Blog">Blog</a></li>
+								ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'">
+								<a href="#!UpdateProfile">UpdateProfile</a>
+							</li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li
-								ng-hide="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a href="#!Register">Register</a></li>
+								ng-hide="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a
+								href="#!Register">Register</a></li>
 							<li
-								ng-hide="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a href="#!AboutUs">AboutUs</a></li>
+								ng-hide="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a
+								href="#!AboutUs">AboutUs</a></li>
+							<!-- Button trigger modal -->
+
 							<li
-								ng-hide="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a href="#!ContactUs">ContactUs</a></li>
+								ng-hide="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a
+								href="#!ContactUs">ContactUs</a></li>
+
 						</ul>
-					
-					<div class="nav navbar-nav navbar-right"
-						ng-hide="currentUser==undefined">
-					<ul class="nav navbar-nav">
-					<li> <font color="white">Welcome {{currentUser.loginname}}</font></li>
-					<form ng-controller="UserController"><input type="submit" value="LogOut" ng-click="logout()" class="btn btn-info"></form> 
-					</ul>
-					</div></div>
+
+						<div class="nav navbar-nav navbar-right"
+							ng-hide="currentUser==undefined">
+							<ul class="nav navbar-nav">
+								<li><font color="white">Welcome
+										{{currentUser.loginname}}</font></li>
+								<div ng-controller="UserController">
+									<input type="submit" value="LogOut" ng-click="logout()"
+										class="btn btn-info">
+								</div>
+							</ul>
+						</div>
+					</div>
 				</nav>
 			</div>
 		</div>
+
+
 		<div ng-view></div>
 	</div>
 	<footer>
@@ -96,6 +131,7 @@ footer {
 			</div>
 		</div>
 	</footer>
+
 </body>
 
 </html>

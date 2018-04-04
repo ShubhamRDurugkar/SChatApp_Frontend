@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Register</title>
+<style type="text/css">
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
 
 *:focus {
@@ -10,11 +16,11 @@ body {
 	background: #DDD;
 	font-size: 16px;
 	color: #222;
-	font-family: 'Roboto', sans-serif;
+	font-family: COTILLIO, sans-serif;
 	font-weight: 300;
 }
 
-#login-box {
+#signin-box {
 	position: relative;
 	margin: 5% auto;
 	width: 600px;
@@ -30,14 +36,15 @@ body {
 	left: 0;
 	box-sizing: border-box;
 	padding: 40px;
-	width: 300px;
-	height: 400px;
+	width: 500px;
+	height: 600px;
 }
 
 h1 {
 	margin: 0 0 20px 0;
 	font-weight: 300;
 	font-size: 28px;
+	font-color:'lightblue'
 }
 
 input[type="text"], input[type="password"] {
@@ -49,7 +56,7 @@ input[type="text"], input[type="password"] {
 	height: 32px;
 	border: none;
 	border-bottom: 1px solid #AAA;
-	font-family: 'Roboto', sans-serif;
+	font-family: COTILLIO, sans-serif;
 	font-weight: 400;
 	font-size: 15px;
 	transition: 0.2s ease;
@@ -69,7 +76,7 @@ input[type="submit"] {
 	border: none;
 	border-radius: 2px;
 	color: #FFF;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'COTILLIO', sans-serif;
 	font-weight: 500;
 	text-transform: uppercase;
 	transition: 0.1s ease;
@@ -130,7 +137,7 @@ button.social-signin {
 	border: none;
 	border-radius: 2px;
 	color: #FFF;
-	font-family: 'Roboto', sans-serif;
+	font-family: COTILLIO, sans-serif;
 	font-weight: 500;
 	transition: 0.2s ease;
 	cursor: pointer;
@@ -157,3 +164,40 @@ button.social-signin.twitter {
 button.social-signin.google {
 	background: #DD4B39;
 }
+</style>
+</head>
+<body>
+	<div id="signin-box">
+		<div class="left">
+			<h1 align="center"><b>Sign up</b></h1>
+			<div class="form-group">
+				<label class="col-md-4 " for="LoginName">LoginName</label> <input
+					id="loginname" name="loginname" type="text"
+					placeholder="Enter loginname here" class="form-control input-md">
+
+				<label class="col-md-4 control-label" for="username">UserName</label>
+				<input id="username" name="username" type="text"
+					placeholder="Enter your username here"
+					class="form-control input-md"> <label
+					class="col-md-4 control-label" for="emailId">EmailId</label> <input
+					id="emaild" name="emaild" type="text"
+					placeholder="Enter emailId here" class="form-control input-md">
+
+				<label class="col-md-4 control-label" for="address">Address</label>
+
+				<textarea class="form-control" id="address" name="address">Address here</textarea>
+
+				<label class="col-md-4 control-label" for="mobileNo">MobileNo</label>
+				<input id="mobileNo" name="mobileNo" type="text"
+					placeholder="Enter the mobileNo" class="form-control input-md">
+
+				<label class="col-md-4 control-label" for="password">Password</label>
+				<input id="password" name="password" type="password"
+					placeholder="enter password here" class="form-control input-md">
+
+				<button id="Register" name="Register" class="btn btn-primary">Register</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

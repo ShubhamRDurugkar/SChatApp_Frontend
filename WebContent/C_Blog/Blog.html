@@ -6,12 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Blog</title>
-
-<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+	rel="stylesheet">
+<!-- <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/style.css" rel="stylesheet">
-
+ -->
 </head>
-<body>
+<body ng-app="myApp">
 
 	<div class="container-fluid" ng-controller="BlogController">
 		<div class="row">
@@ -19,65 +21,51 @@
 				<div class="page-header">
 					<h1>Create Blogs</h1>
 				</div>
-				<form role="form">
+				<form role="form" mthod="post">
 					<div class="form-group">
 						<label for="blogName"> Blog Name </label> <input type="text"
-							name="blogName" ng-model="blog.blogName" class="form-control"
-							id="blogName">
+							placeholder="Blog Name" name="blogName" ng-model="blog.blogName"
+							class="form-control input-lg" id="blogName">
 					</div>
 					<div class="form-group">
 
-						<label for="blogContent"> Blog Content </label> <input
-							name="blogContent" ng-model="blog.blogContent" type="textarea"
-							class="form-control" id="blogContent">
+						<label for="blogContent"> Blog Content </label>
+						<textarea rows="6" cols="24" class="form-control input-lg" id="blogContent"
+							placeholder="Blog Content" name="blogContent"
+							ng-model="blog.blogContent"></textarea>
 
 					</div>
 					<button type="submit" class="btn btn-primary" value="Insert Blog"
 						ng-Click="insertBlog()">Submit</button>
 				</form>
-				<h3>List of Created Blogs</h3>
-				<table class="table table-bordered">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Product</th>
-							<th>Payment Taken</th>
-							<th>Status</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td>TB - Monthly</td>
-							<td>01/04/2012</td>
-							<td>Default</td>
-						</tr>
-						<tr class="table-active">
-							<td>1</td>
-							<td>TB - Monthly</td>
-							<td>01/04/2012</td>
-							<td>Approved</td>
-						</tr>
-						<tr class="table-success">
-							<td>2</td>
-							<td>TB - Monthly</td>
-							<td>02/04/2012</td>
-							<td>Declined</td>
-						</tr>
-						<tr class="table-warning">
-							<td>3</td>
-							<td>TB - Monthly</td>
-							<td>03/04/2012</td>
-							<td>Pending</td>
-						</tr>
-						<tr class="table-danger">
-							<td>4</td>
-							<td>TB - Monthly</td>
-							<td>04/04/2012</td>
-							<td>Call in to confirm</td>
-						</tr>
-					</tbody>
-				</table>
+				<form id="blogform" method="post">
+
+
+					<h3>List of Created Blogs</h3>
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>BlogName</th>
+								<th>BlogContent</th>
+								<th>Likes</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="blog in blogData">
+								<td>{{blog.blogName}}</td>
+								<td>{{blog.blogContent}}</td>
+								<td>{{blog.likes}}<input type="submit"
+									class="btn btn-primary" value="LIKES"
+									ng-click="incrementLike(blog.blogId)" /></td>
+								<td><input type="submit" class="btn btn-primary"
+									value="EDIT BLOG" ng-click="editBlog(blog.blogId)" /> <input
+									type="submit" class="btn btn-primary" value="DELETE BLOG"
+									ng-click="deleteBlog(blog.blogId)" /></td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -87,6 +75,7 @@
 	<script src="../js/scripts.js"></script>
 	<script src="/BlogController.js"></script>
 
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.js"></script>
+	<script
+		src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.js"></script>
 </body>
 </html>
