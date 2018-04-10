@@ -9,18 +9,17 @@
 <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
-<!-- <link href="../css/bootstrap.min.css" rel="stylesheet">
-<link href="../css/style.css" rel="stylesheet">
- -->
+<script src="../js/MyRouteConfig.js"></script>
 </head>
 <body ng-app="myApp">
 
 	<div class="container-fluid" ng-controller="BlogController">
 		<div class="row">
 			<div class="col-md-12">
-				<div class="page-header">
-					<h1>Create Blogs</h1>
+				<div class="jumbotron">
+					<h2>Create your blogs here!</h2>
 				</div>
+
 				<form role="form" mthod="post">
 					<div class="form-group">
 						<label for="blogName"> Blog Name </label> <input type="text"
@@ -30,8 +29,8 @@
 					<div class="form-group">
 
 						<label for="blogContent"> Blog Content </label>
-						<textarea rows="6" cols="24" class="form-control input-lg" id="blogContent"
-							placeholder="Blog Content" name="blogContent"
+						<textarea rows="6" cols="24" class="form-control input-lg"
+							id="blogContent" placeholder="Blog Content" name="blogContent"
 							ng-model="blog.blogContent"></textarea>
 
 					</div>
@@ -48,7 +47,7 @@
 								<th>BlogName</th>
 								<th>BlogContent</th>
 								<th>Likes</th>
-								<th>Action</th>
+								<!-- <th>Action</th> -->
 							</tr>
 						</thead>
 						<tbody>
@@ -58,14 +57,19 @@
 								<td>{{blog.likes}}<input type="submit"
 									class="btn btn-primary" value="LIKES"
 									ng-click="incrementLike(blog.blogId)" /></td>
-								<td><input type="submit" class="btn btn-primary"
+								<!-- <td><input type="submit" class="btn btn-primary"
 									value="EDIT BLOG" ng-click="editBlog(blog.blogId)" /> <input
 									type="submit" class="btn btn-primary" value="DELETE BLOG"
-									ng-click="deleteBlog(blog.blogId)" /></td>
+									ng-click="deleteBlog(blog.blogId)" /></td> -->
+								<!-- <td><a href="#!manageBlogs"></a><input type="submit" class="btn btn-primary"
+									value="ManageBlogs" /> </td> -->
 							</tr>
 						</tbody>
 					</table>
 				</form>
+				<div class="jumbotron">
+					<h2></h2>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -74,7 +78,7 @@
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/scripts.js"></script>
 	<script src="/BlogController.js"></script>
-
+	<script src="../C_User/UserController.js"></script>
 	<script
 		src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.js"></script>
 </body>

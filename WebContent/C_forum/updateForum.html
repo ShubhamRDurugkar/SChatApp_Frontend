@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Update Blog</title>
+</head>
+<body>
+	<div ng-controller="BlogController">
+		<h1 class="text-center">Update Blog</h1>
+	</div>
+	<div class="row">
+		<form class="col-md-12 center-block" id="blogForm" method="POST">
+			<div class="form-group">
+				<input type="text" class="form-control input-lg" name="blogName"
+					placeholder="Blog name" ng-model="blog.blogName" />{{blog.blogName}}
+			</div>
+			<div class="form-group">
+				<textarea class="form-control input-lg" rows="3" name="blogContent"
+					placeholder="Blog content" ng-model="blog.blogContent">{{blog.blogContent}}</textarea>
+			</div>
+			<div class=form-group>
+				<input type="submit" class="btn btn-lg btn-success"
+					value="Update Blog" ng-click="updateBlog(blog.blogId)"> <input
+					type="reset" class="btn btn-lg btn-default" value="Reset">
+			</div>
+		</form>
+	</div>
+</body>
+</html>

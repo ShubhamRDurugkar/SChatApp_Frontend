@@ -1,4 +1,4 @@
-myApp.controller("BlogController", function($scope, $http, $location) {
+myApp.controller("BlogController", function($scope, $http, $location,$rootScope) {
 	$scope.blog = {
 		"blogName" : '',
 		"blogContent" : '',
@@ -7,11 +7,19 @@ myApp.controller("BlogController", function($scope, $http, $location) {
 		"loginname" : '',
 		"status" : ''
 	}
-
+	$rootScope.blog1 = {
+			"blogName" : '',
+			"blogContent" : '',
+			"createdDate" : '',
+			"likes" : 0,
+			"loginname" : '',
+			"status" : ''
+		}
 	$scope.blogData;
 
 	$scope.insertBlog = function() {
 		console.log('Entered into the insertBlog method');
+		$scope.blog.loginname=$rootScope.currentUser.loginname;
 		$http.post("http://localhost:8083/SChatMiddleWare/addBlog",
 						$scope.blog).then(fetchAllBlogs(), function(response) {
 					//$location.reload();

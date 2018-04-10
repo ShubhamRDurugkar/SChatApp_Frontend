@@ -20,8 +20,12 @@ myApp.config(function($routeProvider) {
 		templateUrl : "template/AboutUs.html"
 	}).when("/Blog", {
 		templateUrl : "C_Blog/Blog.html"
-	}).when("/updateBlog", {
-		templateUrl : "C_Blog/updateBlog.html"
+	}).when("/Blog", {
+		templateUrl : "C_Blog/Blog.html"
+	}).when("/createForum", {
+		templateUrl : "C_forum/Forum.html"
+	}).when("/Chat", {
+	templateUrl : "C_chat/chat.html"
 	});
 });
 

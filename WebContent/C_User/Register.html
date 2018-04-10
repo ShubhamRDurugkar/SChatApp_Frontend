@@ -168,36 +168,40 @@ button.social-signin.google {
 </head>
 <body>
 	<div id="signin-box">
-		<div class="left">
+		<div class="left" ng-controller="UserController">
 			<h1 align="center"><b>Sign up</b></h1>
 			<div class="form-group">
 				<label class="col-md-4 " for="LoginName">LoginName</label> <input
 					id="loginname" name="loginname" type="text"
-					placeholder="Enter loginname here" class="form-control input-md">
+					placeholder="Enter loginname here" ng-model="user.loginname" class="form-control input-md">
 
 				<label class="col-md-4 control-label" for="username">UserName</label>
-				<input id="username" name="username" type="text"
+				<input id="username" name="username" ng-model="user.username" type="text"
 					placeholder="Enter your username here"
 					class="form-control input-md"> <label
 					class="col-md-4 control-label" for="emailId">EmailId</label> <input
 					id="emaild" name="emaild" type="text"
-					placeholder="Enter emailId here" class="form-control input-md">
+					placeholder="Enter emailId here" ng-model="user.emailId" class="form-control input-md">
 
 				<label class="col-md-4 control-label" for="address">Address</label>
 
-				<textarea class="form-control" id="address" name="address">Address here</textarea>
+				<textarea class="form-control" id="address" ng-model="user.address" name="address">Address here</textarea>
 
 				<label class="col-md-4 control-label" for="mobileNo">MobileNo</label>
 				<input id="mobileNo" name="mobileNo" type="text"
-					placeholder="Enter the mobileNo" class="form-control input-md">
+					placeholder="Enter the mobileNo" ng-model="user.mobileNo" class="form-control input-md">
 
 				<label class="col-md-4 control-label" for="password">Password</label>
-				<input id="password" name="password" type="password"
-					placeholder="enter password here" class="form-control input-md">
+				<input id="password" name="password" autocomplete="on" type="password"
+					placeholder="enter password here" ng-model="user.password" class="form-control input-md">
 
-				<button id="Register" name="Register" class="btn btn-primary">Register</button>
+				<button id="Register" name="Register" ng-click="register()" class="btn btn-primary">Register</button>
 			</div>
 		</div>
 	</div>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/scripts.js"></script>
+	<script src="/UserController.js"></script>
 </body>
 </html>
