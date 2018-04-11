@@ -11,20 +11,25 @@
 		<div class="row">
 				<div class="col-sm-9 form-group">
 				  <label>Message</label>
-				  <input type="text" placeholder="Enter message here" ng-model="message">
+				  <input type="text" class="form-control" placeholder="Enter message here" ng-model="message">
+				Text length  <span classs="count" ng-bind="max - message.length"> 140</span>
 				</div>
-				<div class="col-sm-3 form-group">
-					<span classs="count" ng-bind="max - message.length">140</span>
-					<button ng-disabled="message.length>140||message.length==0">Send</button>
+				<div class="col-sm-6 form-group">
+					<button class="btn btn-primary" ng-disabled="message.length>140||message.length==0">Send</button>
 				</div>
 		</div>
 	</div>
 	</form>
 
         
-        <div class="col-sm-12">
-            <p ng-repeat="message in messages">
-                <span><img src="http://localhost:8083/SChatMiddleWare/getImage/{{currentUser.loginname}}" width="20" height=20"/>{{message.message}}</span>
+        <div class="jumbotron">
+            <p ng-repeat="message in messages" color="lightblue">
+                <span>
+                <img src="http://localhost:8083/SChatMiddleWare/getImage/{{currentUser.loginname}}" width="20" height=20" onerror=this.src="avatar.png"/>
+                
+                <font color="blue" face="Comic Sans MS">  {{message.message}} </font>
+                
+                </span>
             </p>
         </div>
 

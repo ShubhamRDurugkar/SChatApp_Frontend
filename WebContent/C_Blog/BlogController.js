@@ -1,4 +1,4 @@
-myApp.controller("BlogController", function($scope, $http, $location,$rootScope) {
+myApp.controller("BlogController", function($scope, $http, $location,$rootScope, $window) {
 	$scope.blog = {
 		"blogName" : '',
 		"blogContent" : '',
@@ -22,8 +22,8 @@ myApp.controller("BlogController", function($scope, $http, $location,$rootScope)
 		$scope.blog.loginname=$rootScope.currentUser.loginname;
 		$http.post("http://localhost:8083/SChatMiddleWare/addBlog",
 						$scope.blog).then(fetchAllBlogs(), function(response) {
-					//$location.reload();
 					console.log('Status text:' + response.statusText);
+					 $window.alert("Data inserted successfully");
 				});
 	};
 	function fetchAllBlogs() {
@@ -35,35 +35,36 @@ myApp.controller("BlogController", function($scope, $http, $location,$rootScope)
 				});
 	};
 	$scope.editBlog = function(blogId) {
-		alert("In edit method");
+		console.log('Entered into the editBlog method');
 		$http.get('http://localhost:8083/SChatMiddleWare/getBlog/' + blogId)
-				.then(fetchAllBlogs(), function(response) {
+				.then( function(response) {
 					console.log('In edit blog');
+					console.log(response.data);
 					$scope.blog = response.data;
-					$location.path('/updateBlog');
 					console.log('Status Text' + response.statusText);
-					
+					$location.path('/updateBlog');					
 				});
 	};
 
 	$scope.updateBlog = function(blogId){
-		alert("in update blog");
+		console.log('Entered into the updateBlog method');
+		console.log(blogId);
 		$http.put('http://localhost:8083/SChatMiddleWare/updateBlog/'+ blogId, $scope.blog)
 		.then(fetchAllBlogs(), function(response){
 			console.log('updated blog'+ blogId+ ' successfully');
-			// $location.path('/updateBlog');
 			console.log(blogId +" updated successfully");
-		// $location.reload();
+			 $location.path("/Blog"); 
 		});
 		
 	};
 	$scope.deleteBlog = function(blogId){
-		// alert("in delete blog");
+		console.log('Entered into the deleteBlog method');
 		$http.delete('http://localhost:8083/SChatMiddleWare/deleteBlog/'+blogId)
 		.then(fetchAllBlogs(), function(response){
 			console.log('Blog deleted '+ blogId);
 			console.log('Response Status ' + response.statusText);
-		// $location.reload();
+			fetchAllBlogs();
+			$location.path("/Blog");
 		});
 	};
 	$scope.incrementLike = function(blogId) {
@@ -73,6 +74,7 @@ myApp.controller("BlogController", function($scope, $http, $location,$rootScope)
 						+ blogId, $scope.blog).then(fetchAllBlogs(),
 				function(response) {
 					console.log('Incremented likes');
+					fetchAllBlogs();
 					$location.path('/Blog')
 				});
 	}

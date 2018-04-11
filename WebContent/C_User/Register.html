@@ -13,7 +13,6 @@
 body {
 	margin: 0;
 	padding: 0;
-	background: #DDD;
 	font-size: 16px;
 	color: #222;
 	font-family: COTILLIO, sans-serif;
@@ -22,9 +21,9 @@ body {
 
 #signin-box {
 	position: relative;
-	margin: 5% auto;
-	width: 600px;
-	height: 500px;
+	margin: 4% auto;
+	width: 500px;
+	height: 600px;
 	background: #FFF;
 	border-radius: 2px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
@@ -44,7 +43,7 @@ h1 {
 	margin: 0 0 20px 0;
 	font-weight: 300;
 	font-size: 28px;
-	font-color:'lightblue'
+	font-color: 'lightblue'
 }
 
 input[type="text"], input[type="password"] {
@@ -114,7 +113,7 @@ input[type="submit"]:active {
 	right: 0;
 	box-sizing: border-box;
 	padding: 40px;
-	width: 300px;
+	width: 400px;
 	height: 400px;
 	background: url('https://goo.gl/YbktSj');
 	background-size: cover;
@@ -129,79 +128,70 @@ input[type="submit"]:active {
 	color: #FFF;
 	text-align: center;
 }
-
-button.social-signin {
-	margin-bottom: 20px;
-	width: 220px;
-	height: 36px;
-	border: none;
-	border-radius: 2px;
-	color: #FFF;
-	font-family: COTILLIO, sans-serif;
-	font-weight: 500;
-	transition: 0.2s ease;
-	cursor: pointer;
-}
-
-button.social-signin:hover, button.social-signin:focus {
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-	transition: 0.2s ease;
-}
-
-button.social-signin:active {
-	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-	transition: 0.2s ease;
-}
-
-button.social-signin.facebook {
-	background: #32508E;
-}
-
-button.social-signin.twitter {
-	background: #55ACEE;
-}
-
-button.social-signin.google {
-	background: #DD4B39;
-}
 </style>
 </head>
 <body>
 	<div id="signin-box">
-		<div class="left" ng-controller="UserController">
-			<h1 align="center"><b>Sign up</b></h1>
-			<div class="form-group">
-				<label class="col-md-4 " for="LoginName">LoginName</label> <input
-					id="loginname" name="loginname" type="text"
-					placeholder="Enter loginname here" ng-model="user.loginname" class="form-control input-md">
+		<div class="left" align="center" ng-controller="UserController">
+			<font color="blue" face="san serif ms"><h1 align="center">
+					<b>Sign up</b>
+				</h1>
+				<table>
+					<tr>
+						<td><label class="col-md-4 " for="LoginName">LoginName</label>
+						</td>
+						<td><input id="loginname" name="loginname" type="text"
+							placeholder="Enter loginname here" ng-model="user.loginname"
+							class="form-control input-md"></td>
+					</tr>
 
-				<label class="col-md-4 control-label" for="username">UserName</label>
-				<input id="username" name="username" ng-model="user.username" type="text"
-					placeholder="Enter your username here"
-					class="form-control input-md"> <label
-					class="col-md-4 control-label" for="emailId">EmailId</label> <input
-					id="emaild" name="emaild" type="text"
-					placeholder="Enter emailId here" ng-model="user.emailId" class="form-control input-md">
-
-				<label class="col-md-4 control-label" for="address">Address</label>
-
-				<textarea class="form-control" id="address" ng-model="user.address" name="address">Address here</textarea>
-
-				<label class="col-md-4 control-label" for="mobileNo">MobileNo</label>
-				<input id="mobileNo" name="mobileNo" type="text"
-					placeholder="Enter the mobileNo" ng-model="user.mobileNo" class="form-control input-md">
-
-				<label class="col-md-4 control-label" for="password">Password</label>
-				<input id="password" name="password" autocomplete="on" type="password"
-					placeholder="enter password here" ng-model="user.password" class="form-control input-md">
-
-				<button id="Register" name="Register" ng-click="register()" class="btn btn-primary">Register</button>
-			</div>
+					<tr>
+						<td><label class="col-md-4 control-label" for="username">UserName</label></td>
+						<td><input id="username" name="username"
+							ng-model="user.username" type="text"
+							placeholder="Enter your username here"
+							class="form-control input-md"></td>
+					</tr>
+					<tr>
+						<td><label class="col-md-4 control-label" for="emailId">EmailId</label></td>
+						<td><input id="emaild" name="emaild" type="text"
+							placeholder="Enter emailId here" ng-model="user.emailId"
+							class="form-control input-md"></td>
+					</tr>
+					<tr>
+						<td><label class="col-md-4 control-label" for="address">Address</label></td>
+						<td><textarea class="form-control" id="address"
+								placeholder="Address here" ng-model="user.address"
+								name="address"></textarea></td>
+					</tr>
+					<tr>
+						<td><label class="col-md-4 control-label" for="mobileNo">MobileNo</label></td>
+						<td><input id="mobileNo" name="mobileNo" type="text"
+							placeholder="Enter the mobileNo" ng-model="user.mobileNo"
+							class="form-control input-md"></td>
+					</tr>
+					<tr>
+						<td><label class="col-md-4 control-label" for="password">Password</label>
+						</td>
+						<td><input id="password" name="password" autocomplete="on"
+							type="password" placeholder="enter password here"
+							ng-model="user.password" class="form-control input-md"></td>
+					</tr>
+					<tr align="center">
+						<td align="center"><button id="Register" name="Register"
+								ng-click="register()" class="btn btn-primary">Register</button></td>
+					</tr>
+				</table> </font>
 		</div>
 	</div>
+
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/scripts.js"></script>
 	<script src="/UserController.js"></script>
 </body>
 </html>
+
+
+
+

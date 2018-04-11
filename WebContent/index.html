@@ -15,22 +15,30 @@
 <script src="C_chat/ChatService.js"></script>
 <script src="C_forum/ForumController.js"></script>
 
-<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- icon library -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- JQuery Js -->
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <!-- Bootstrap Js -->
-<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.js"></script>
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <!-- LoadAsh Stomp and sockJs -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.3/lodash.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.1/sockjs.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.3/lodash.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.1/sockjs.js"></script>
 
 <style>
 item {
@@ -47,6 +55,112 @@ footer {
 	color: white;
 	text-align: center;
 }
+
+img {
+	border-radius: 50%;
+}
+
+body {
+	background-image: url("back2.jpg");
+}
+
+.navbar-default {
+	background-color: #69899f;
+	border-color: #425766;
+}
+
+.navbar-default .navbar-brand {
+	color: #d7e2e9;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus
+	{
+	color: #e5dbdb;
+}
+
+.navbar-default .navbar-text {
+	color: #d7e2e9;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #d7e2e9;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus
+	{
+	color: #e5dbdb;
+}
+
+.navbar-default .navbar-nav>li>.dropdown-menu {
+	background-color: #69899f;
+}
+
+.navbar-default .navbar-nav>li>.dropdown-menu>li>a {
+	color: #d7e2e9;
+}
+
+.navbar-default .navbar-nav>li>.dropdown-menu>li>a:hover,
+	.navbar-default .navbar-nav>li>.dropdown-menu>li>a:focus {
+	color: #e5dbdb;
+	background-color: #425766;
+}
+
+.navbar-default .navbar-nav>li>.dropdown-menu>li>.divider {
+	background-color: #69899f;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover,
+	.navbar-default .navbar-nav>.active>a:focus {
+	color: #e5dbdb;
+	background-color: #425766;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover,
+	.navbar-default .navbar-nav>.open>a:focus {
+	color: #e5dbdb;
+	background-color: #425766;
+}
+
+.navbar-default .navbar-toggle {
+	border-color: #425766;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus
+	{
+	background-color: #425766;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #d7e2e9;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+	border-color: #d7e2e9;
+}
+
+.navbar-default .navbar-link {
+	color: #d7e2e9;
+}
+
+.navbar-default .navbar-link:hover {
+	color: #e5dbdb;
+}
+
+@media ( max-width : 767px) {
+	.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+		color: #d7e2e9;
+	}
+	.navbar-default .navbar-nav .open .dropdown-menu>li>a:hover,
+		.navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
+		color: #e5dbdb;
+	}
+	.navbar-default .navbar-nav .open .dropdown-menu>.active>a,
+		.navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover,
+		.navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus {
+		color: #e5dbdb;
+		background-color: #425766;
+	}
+}
 </style>
 
 </head>
@@ -55,7 +169,7 @@ footer {
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
-				<nav class="navbar navbar-inverse" role="navigation">
+				<nav class="navbar navbar-default" role="navigation">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle" data-toggle="collapse"
 							data-target="#bs-example-navbar-collapse-1">
@@ -69,40 +183,48 @@ footer {
 					<div class="collapse navbar-collapse"
 						id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="#!">Home</a></li>
+							<li class="active"><a href="#!"><i class="fa fa-home"></i>Home</a></li>
 							<li
 								ng-hide="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'">
-								<a href="#!Login">Login</a>
+								<a href="#!Login"><i class="glyphicon glyphicon-log-in"></i>
+									Login</a>
 							</li>
 							<!-- Blogs -->
-							<li class="dropdown" ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a class="dropdown-toggle"
-								data-toggle="dropdown" href="">Blogs<span class="caret"></span></a>
+							<li class="dropdown"
+								ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a
+								class="dropdown-toggle" data-toggle="dropdown" href="">Blogs<span
+									class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a href="#!Blog">Create Blog</a></li>
-									<li><a href="#!manageBlogs">Manage Blogs</a></li>
+									<li><a href="#!updateBlog">Manage Blogs</a></li>
 								</ul></li>
 							<!-- Blogs END -->
 
 							<!-- Forum -->
-							<li class="dropdown" ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a class="dropdown-toggle"
-								data-toggle="dropdown" href="">Forum<span class="caret"></span></a>
+							<li class="dropdown"
+								ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a
+								class="dropdown-toggle" data-toggle="dropdown" href="">Forum<span
+									class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a href="#!createForum">Create forum</a></li>
-									<li><a href="#!manageForums">Manage Forum</a></li>
+									<li><a href="#!updateForum">Manage Forum</a></li>
 								</ul></li>
 							<!-- Forum END -->
 
-							<li ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'">
-								<a href="#!UpdateProfile">UpdateProfile</a>
+							<li
+								ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'">
+								<a href="#!UpdateProfile"><i
+									class="glyphicon glyphicon-user"></i>UpdateProfile</a>
 							</li>
-							<li ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'">
+							<li
+								ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'">
 								<a href="#!Chat">Chat</a>
 							</li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li
 								ng-hide="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a
-								href="#!Register">Register</a></li>
+								href="#!Register"><i class="glyphicon glyphicon-user"></i>Register</a></li>
 							<li
 								ng-hide="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a
 								href="#!AboutUs">AboutUs</a></li>
@@ -115,18 +237,22 @@ footer {
 						</ul>
 
 						<div class="nav navbar-nav navbar-right"
-							ng-hide="currentUser==undefined">
+							ng-hide="currentUser==undefined" ng-controller="UserController">
 							<ul class="nav navbar-nav">
-								<li><font color="white">Welcome
-										{{currentUser.loginname}}</font></li>
 
-								<div ng-controller="UserController">
-									<li><img id="img1"
-										src="http://localhost:8083/SChatMiddleWare/getImage/{{currentUser.loginname}}"
-										style="height: 80px; width: 100px"></li>
-									<li><input type="submit" value="LogOut"
-										ng-click="logout()" class="btn btn-info"></li>
-								</div>
+								<li><a class="dropdown-toggle" data-toggle="dropdown"
+									href=""> <font color="black">{{currentUser.loginname}}</font></a>
+									<ul class="dropdown-menu">
+										<li align="center"><button value="LogOut"
+												ng-click="logout()" class="btn btn-default">
+												<i class="glyphicon glyphicon-log-out"></i>LogOut
+											</button></li>
+									</ul></li>
+								<li><img id="img1"
+									src="http://localhost:8083/SChatMiddleWare/getImage/{{currentUser.loginname}}"
+									alt="Avatar" onerror=this.src=
+									"avatar.png" style="height: 50px; width: 60px"></li>
+
 							</ul>
 						</div>
 					</div>
