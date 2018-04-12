@@ -19,6 +19,24 @@
 	font-size: 16px;
 	cursor: pointer;
 }
+body {
+	margin: 0;
+	padding: 0;
+	
+	font-size: 16px;
+	color: #222;
+	font-family: COTILLIO, sans-serif;
+	font-weight: 300;
+}
+#blog-box {
+	position: relative;
+	margin: 5% auto;
+	width: 950px;
+	height: 900px;
+	border-radius: 2px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
 
 /* Darker background on mouse-over */
 .btn:hover {
@@ -28,7 +46,7 @@
 </head>
 <body ng-app="myApp">
 	<font color="white" face="verdana">
-		<div class="container-fluid" ng-controller="BlogController">
+		<div id="blog-box" class="container-fluid" ng-controller="BlogController">
 			<div class="row">
 				<div class="col-md-12">
 					<div>
@@ -61,24 +79,28 @@
 						<table class="table table-bordered">
 							<thead>
 								<tr>
+									<th>BlogID</th>
 									<th>BlogName</th>
 									<th>BlogContent</th>
+									<!-- <th>Blog Created Date</th>	 -->
+									<th>Status</th>
 									<th>Likes</th>
 									<!-- <th>Action</th> -->
 								</tr>
 							</thead>
 							<tbody>
 								<tr ng-repeat="blog in blogData">
+									<td>{{blog.blogId}}</td>
 									<td>{{blog.blogName}}</td>
 									<td>{{blog.blogContent}}</td>
-									<td>{{blog.likes}} <t> <!-- <input type="submit"
-									class="btn btn-primary" value="LIKES"
-									ng-click="incrementLike(blog.blogId)" /> -->
+									<!-- <td>{{blog.createDate}}</td> -->
+									<td>{{blog.status}}</td>
+									<td>{{blog.likes}}
 										<button class="btn" value="LIKES"
 											ng-click="incrementLike(blog.blogId)">
 											<i class="glyphicon glyphicon-thumbs-up"></i>
-										</button></td>
-
+										</button>
+									</td>
 									<!-- <button style="font-size:24px" class="btn btn-primary" ng-click="editBlog(blog.blogId)"><i class="fa fa-edit"></i></button>
 								<button class="btn" value="DELETE BLOG"
 									ng-click="deleteBlog(blog.blogId)"  ><i class="fa fa-trash"></i></button>
@@ -94,9 +116,9 @@
 							</tbody>
 						</table>
 					</form>
-					<div class="jumbotron">
+					<!-- <div class="jumbotron">
 						<h2></h2>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>

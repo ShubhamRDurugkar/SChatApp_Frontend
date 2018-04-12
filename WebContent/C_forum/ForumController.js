@@ -1,5 +1,6 @@
-myApp.controller("ForumController", function($scope, $http, $location,$rootScope) {
+myApp.controller("ForumController", function($scope, $http, $location,$rootScope, $window) {
 	$scope.forum = {
+		"forumId":0,	
 		"forumName" : '',
 		"forumContent" : '',
 		"createdDate" : '',
@@ -7,6 +8,7 @@ myApp.controller("ForumController", function($scope, $http, $location,$rootScope
 		"status" : ''
 	}
 	$rootScope.forum1 = {
+			"forumId":0,
 			"forumName" : '',
 			"forumContent" : '',
 			"createdDate" : '',
@@ -20,9 +22,9 @@ myApp.controller("ForumController", function($scope, $http, $location,$rootScope
 		$scope.forum.loginname=$rootScope.currentUser.loginname;
 		$http.post("http://localhost:8083/SChatMiddleWare/addForum",
 						$scope.forum).then(fetchAllForums(), function(response) {
-					//$location.reload();
-							$scope.forumData=response.Data;
-					console.log('Status text:' + response.statusText +' '+$scope.forumData);
+						$scope.forumData=response.Data;
+						console.log('Status text:' + response.statusText);
+						 $window.alert("Data inserted successfully");
 				});
 	};
 	function fetchAllForums() {
@@ -31,49 +33,44 @@ myApp.controller("ForumController", function($scope, $http, $location,$rootScope
 				function(response) {
 					console.log('Status text:' + response.statusText);
 					$scope.forumData = response.data;
+					console.log(response.data);
 				});
 	};
 	$scope.editForum = function(forumId) {
-		alert("In edit method");
+		console.log('In editForum method');
 		$http.get('http://localhost:8083/SChatMiddleWare/getForum/' + forumId)
-				.then(fetchAllForums(), function(response) {
+				.then( function(response) {
 					console.log('In edit forum');
+					console.log(response.data);
 					$scope.forum = response.data;
-					$location.path('/updateForum');
 					console.log('Status Text' + response.statusText);
-					
+					$location.path('/updateForum');
 				});
 	};
 
 	$scope.updateForum = function(forumId){
-		alert("in update forum");
+		console.log('Entered into the updateForum method');
+		console.log(forumId);
 		$http.put('http://localhost:8083/SChatMiddleWare/updateForum/'+ forumId, $scope.forum)
 		.then(fetchAllForums(), function(response){
 			console.log('updated forum'+ forumId+ ' successfully');
-			// $location.path('/updateForum');
 			console.log(forumId +" updated successfully");
-		// $location.reload();
+			 $location.path('/updateForum');
+			$window.alert('Forum updated successfully...');
+			
 		});
 		
 	};
 	$scope.deleteForum = function(forumId){
-		// alert("in delete forum");
+		console.log('Entered into the deleteForum method');
 		$http.delete('http://localhost:8083/SChatMiddleWare/deleteForum/'+forumId)
 		.then(fetchAllForums(), function(response){
 			console.log('Forum deleted '+ forumId);
 			console.log('Response Status ' + response.statusText);
-		// $location.reload();
+			fetchAllForums();
+			$window.alert('Forum deleted successfully..');
 		});
 	};
-	$scope.incrementLike = function(forumId) {
-		console.log('Into like increment');
-		$http.post(
-				'http://localhost:8083/SChatMiddleWare/incrementLikes/'
-						+ forumId, $scope.forum).then(fetchAllForums(),
-				function(response) {
-					console.log('Incremented likes');
-					$location.path('/Forum')
-				});
-	}
+
 	fetchAllForums();
 });

@@ -41,22 +41,21 @@ myApp.controller("UserController", function($scope, $http, $location,
 		$http.post("http://localhost:8083/SChatMiddleWare/registerUser",
 				$scope.user).then(function(response) {
 			console.log('Status text:' + response.statusText);
+			alert('Registered successfully..!!');
 			$location.path("/");
 		});
 
 	};
-	/*
-	 * $rootScope.uploadPic=function() { console.log('UploadPic Function');
-	 * $http.post('http://localhost:8083/SChatMiddleWare/doUpload',$scope.userProfile)
-	 * .then(function(response) { console.log(response.status);
-	 * $scope.userProfile=response.data; $location.path("/"); });
-	 *  };
-	 */
+
 	$rootScope.logout = function() {
-		console.log('Logout Function');
-		delete $rootScope.currentUser;
-		$cookieStore.remove('userDetails');
-		$location.path("/");
+		console.log('Entered into the logout function');
+		$http.post("http://localhost:8083/SChatMiddleWare/logout", $rootScope.currentUser)
+				.then(function(response) {
+					console.log(response.data);
+					delete $rootScope.currentUser;
+					$cookieStore.remove('userDetails');
+					$location.path("/");
+				});
 	}
 
 });

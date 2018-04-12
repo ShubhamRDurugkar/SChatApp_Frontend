@@ -1,16 +1,18 @@
 myApp.controller("BlogController", function($scope, $http, $location,$rootScope, $window) {
 	$scope.blog = {
+			"blogId":0,
 		"blogName" : '',
 		"blogContent" : '',
-		"createdDate" : '',
+		"createDate" : '',
 		"likes" : 0,
 		"loginname" : '',
 		"status" : ''
 	}
 	$rootScope.blog1 = {
+			"blogId":0,
 			"blogName" : '',
 			"blogContent" : '',
-			"createdDate" : '',
+			"createDate" : '',
 			"likes" : 0,
 			"loginname" : '',
 			"status" : ''
@@ -32,6 +34,7 @@ myApp.controller("BlogController", function($scope, $http, $location,$rootScope,
 				function(response) {
 					console.log('Status text:' + response.statusText);
 					$scope.blogData = response.data;
+					console.log(response.data);
 				});
 	};
 	$scope.editBlog = function(blogId) {
@@ -53,7 +56,8 @@ myApp.controller("BlogController", function($scope, $http, $location,$rootScope,
 		.then(fetchAllBlogs(), function(response){
 			console.log('updated blog'+ blogId+ ' successfully');
 			console.log(blogId +" updated successfully");
-			 $location.path("/Blog"); 
+			$window.alert('Blog updated successfully...');
+			 $location.path("/updateForum"); 
 		});
 		
 	};
@@ -64,6 +68,7 @@ myApp.controller("BlogController", function($scope, $http, $location,$rootScope,
 			console.log('Blog deleted '+ blogId);
 			console.log('Response Status ' + response.statusText);
 			fetchAllBlogs();
+			$window.alert('Blog deleted successfully..');
 			$location.path("/Blog");
 		});
 	};

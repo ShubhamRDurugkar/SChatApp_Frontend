@@ -23,12 +23,29 @@
 .btn:hover {
 	background-color: Black;
 }
+body {
+	margin: 0;
+	padding: 0;
+	
+	font-size: 16px;
+	color: #222;
+	font-family: COTILLIO, sans-serif;
+	font-weight: 300;
+}
+#blog-box {
+	position: relative;
+	margin: 5% auto;
+	width: 900px;
+	height: 800px;
+	border-radius: 2px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
 </style>
 </head>
 
 <body ng-app="myApp">
 	<font color="white" face="verdana">
-		<div class="row" ng-controller="BlogController">
+		<div id="blog-box" class="row" ng-controller="BlogController">
 			<div>
 				<font color="white" face="Edwardian Script ITC">
 					<h1 class="text-center">Update Blog</h1>
@@ -55,22 +72,26 @@
 				<table class="table table-bordered">
 					<thead>
 						<tr>
+							<th>BlogId</th>
 							<th>BlogName</th>
 							<th>BlogContent</th>
+							<th>Status</th>
 							<th>Likes</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr ng-repeat="blog in blogData">
+							<td>{{blog.blogId}}</td>
 							<td>{{blog.blogName}}</td>
 							<td>{{blog.blogContent}}</td>
+							<td>{{blog.status}}</td>
 							<td>{{blog.likes}} <t>
 								<button class="btn" value="LIKES"
 									ng-click="incrementLike(blog.blogId)">
 									<i class="glyphicon glyphicon-thumbs-up"></i>
 								</button></td>
-							<td><button style="font-size: 24px" class="btn btn-primary"
+							<td><button  class="btn btn-primary"
 									ng-click="editBlog(blog.blogId)">
 									<i class="fa fa-edit"></i>
 								</button>
@@ -83,9 +104,9 @@
 					</tbody>
 				</table>
 			</form>
-			<div class="jumbotron">
+		<!-- 	<div class="jumbotron">
 				<h2></h2>
-			</div>
+			</div> -->
 		</div>
 	</font>
 </body>
