@@ -12,10 +12,10 @@
 <style>
 .btn {
 	background-color: DodgerBlue;
-	border: none;
+	border: 1px;
 	color: white;
-	padding: 12px 16px;
-	font-size: 16px;
+	padding: 12px 14px;
+	font-size: 12px;
 	cursor: pointer;
 }
 
@@ -23,20 +23,21 @@
 .btn:hover {
 	background-color: Black;
 }
+
 body {
 	margin: 0;
 	padding: 0;
-	
 	font-size: 16px;
 	color: #222;
 	font-family: COTILLIO, sans-serif;
 	font-weight: 300;
 }
+
 #blog-box {
 	position: relative;
 	margin: 5% auto;
-	width: 900px;
-	height: 800px;
+	width: 1100px;
+	height: 1000px;
 	border-radius: 2px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
@@ -68,7 +69,14 @@ body {
 				</div>
 			</form>
 			<form id="blogform" method="post">
-				<h3>List of Created Blogs</h3>
+				<h3>
+					List of Created Blogs
+					<h4 align="right">
+						<button class="btn" ng-click="fetchAllBlogs()">
+							<i class="glyphicon glyphicon-refresh"></i>
+						</button>
+					</h4>
+				</h3>
 				<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -91,20 +99,28 @@ body {
 									ng-click="incrementLike(blog.blogId)">
 									<i class="glyphicon glyphicon-thumbs-up"></i>
 								</button></td>
-							<td><button  class="btn btn-primary"
+							<td >
+								<button class="btn btn-primary"
+									ng-hide="currentUser.loginname!=blog.loginname"
 									ng-click="editBlog(blog.blogId)">
 									<i class="fa fa-edit"></i>
 								</button>
-								<button class="btn" value="DELETE BLOG"
-									ng-click="deleteBlog(blog.blogId)">
+								<button class="btn"ng-show="currentUser.role=='ROLE_ADMIN'" ng-click="deleteBlog(blog.blogId)">
 									<i class="fa fa-trash"></i>
-								</button></td>
+								</button>
+								<button class="btn" ng-show="currentUser.role=='ROLE_ADMIN'" ng-click="approveBlog(blog.blogId)">
+									<i class="glyphicon glyphicon-ok">Approve</i>
+								</button>
+								<button class="btn" ng-show="currentUser.role=='ROLE_ADMIN'" ng-click="rejectBlog(blog.blogId)">
+									<i class="glyphicon glyphicon-remove">Reject</i>
+								</button>
+							</td>
 
 						</tr>
 					</tbody>
 				</table>
 			</form>
-		<!-- 	<div class="jumbotron">
+			<!-- 	<div class="jumbotron">
 				<h2></h2>
 			</div> -->
 		</div>
