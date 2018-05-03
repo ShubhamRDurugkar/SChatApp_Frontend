@@ -80,17 +80,7 @@ myApp.controller("UserController", function($scope, $http, $location,
 					$cookieStore.put('userDetails', response.data);
 				});
 	};
-	/*$scope.listUsers = function() {
-		console.log("Inside list user Details function "
-				+ $rootScope.currentUser.loginname);
-		$http.get("http://localhost:8083/SChatMiddleWare/listUsers").then(
-				function(response) {
-					console.log("fetched Users");
-					$scope.userList = response.data;
-					$scope.user = response.data;
-					$cookieStore.put('userDetails', response.data);
-				});
-	};*/
+	
 	$rootScope.logout = function() {
 		console.log('Entered into the logout function');
 		$http.post("http://localhost:8083/SChatMiddleWare/logout",
