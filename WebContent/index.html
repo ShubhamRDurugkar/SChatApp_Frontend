@@ -14,6 +14,7 @@
 <script src="C_chat/ChatController.js"></script>
 <script src="C_chat/ChatService.js"></script>
 <script src="C_forum/ForumController.js"></script>
+<script src="C_friend/FriendController.js"></script>
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -62,6 +63,8 @@ footer {
 
 body {
 	background-image: url("back2.jpg");
+	font-size: 18px;
+	color: white;
 }
 
 .navbar-default {
@@ -184,11 +187,7 @@ body {
 						id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
 							<li class="active"><a href="#!"><i class="fa fa-home"></i>Home</a></li>
-							<li
-								ng-hide="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'">
-								<a href="#!Login"><i class="glyphicon glyphicon-log-in"></i>
-									Login</a>
-							</li>
+
 							<!-- Blogs -->
 							<li class="dropdown"
 								ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a
@@ -196,6 +195,7 @@ body {
 									class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a href="#!Blog">Create Blog</a></li>
+									<li><a href="#!ViewBlog">view Blogs</a></li>
 									<li><a href="#!updateBlog">Manage Blogs</a></li>
 								</ul></li>
 							<!-- Blogs END -->
@@ -207,21 +207,59 @@ body {
 									class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a href="#!createForum">Create forum</a></li>
+									<li><a href="#!ViewForums">View Forums</a></li>
 									<li><a href="#!updateForum">Manage Forum</a></li>
 								</ul></li>
 							<!-- Forum END -->
 
-							<li
+							<!-- Friend  -->
+							<li class="dropdown" ng-show="currentUser.role=='ROLE_USER'"><a
+								class="dropdown-toggle" data-toggle="dropdown" href="">Friends<span
+									class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#!friends">Friends</a></li>
+									<li><a href="#!suggestedFriends"><i
+											class="glyphicon glyphicon-user"></i>Suggested Friends</a></li>
+									<li><a href="#!pendingRequests">Pending Friend
+											Requests</a></li>
+								</ul></li>
+							<!-- Friend END -->
+							<!-- Profile dropdown -->
+							<li class="dropdown"
 								ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'">
-								<a href="#!UpdateProfile"><i
-									class="glyphicon glyphicon-user"></i>UpdateProfile</a>
+								<a class="dropdown-toggle" data-toggle="dropdown" href=""><i
+									class="glyphicon glyphicon-user"></i>Profile</a>
+								<ul class="dropdown-menu">
+								<li	ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'">
+										<a href="#!UpdateProfileDetails"><i
+											class="glyphicon glyphicon-user"></i>Update Profile details</a>
+
+									</li>
+									<li
+										ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'">
+										<a href="#!UpdateProfilePicture"><i
+											class="glyphicon glyphicon-user"></i>UpdateProfile Picture</a>
+
+									</li>
+									<li
+										ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'">
+										<a href="#!ViewProfile"><i
+											class="glyphicon glyphicon-user"></i>ViewProfile</a>
+									</li>
+									<!-- <li ng-show="currentUser.role=='ROLE_USER'"><a
+										href="#!userRequests"><i class="glyphicon glyphicon-user"></i>UserRequests</a></li> -->
+								</ul>
 							</li>
-							<li
-								ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'">
-								<a href="#!Chat">Chat</a>
+							<!-- Profile dropdown -->
+							<li ng-show="currentUser.role=='ROLE_USER'"><a href="#!Chat">Chat</a>
 							</li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
+							<li
+								ng-hide="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'">
+								<a href="#!Login"><i class="glyphicon glyphicon-log-in"></i>
+									Login</a>
+							</li>
 							<li
 								ng-hide="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a
 								href="#!Register"><i class="glyphicon glyphicon-user"></i>Register</a></li>
