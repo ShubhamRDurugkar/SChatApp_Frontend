@@ -16,7 +16,8 @@ myApp.controller("ForumController", function($scope, $http, $location,$rootScope
 			"status" : ''
 		}
 	$scope.forumData;
-
+	$scope.forumComment={"commentID":0,"forumId":'',"commentDate":'',"commentText":'',"loginname":''}
+	$scope.forumComments;
 	$scope.insertForum = function() {
 		console.log('Entered into the insertForum method');
 		$scope.forum.loginname=$rootScope.currentUser.loginname;
@@ -70,6 +71,67 @@ myApp.controller("ForumController", function($scope, $http, $location,$rootScope
 			fetchAllForums();
 			$window.alert('Forum deleted successfully..');
 		});
+	};
+
+	$scope.approveForum = function(forumId){
+		console.log('Entered into the approveForum method');
+		console.log(forumId);
+		$http.put('http://localhost:8083/SChatMiddleWare/approveForum/'+ forumId)
+		.then(fetchAllForums(), function(response){
+			console.log('Approved forum'+ forumId+ ' successfully');
+			console.log(forumId +" updated successfully");
+			$window.alert('Forum approved successfully...');
+			fetchAllForums();
+			 $location.path("/updateForum"); 
+		});
+		
+	};
+	$scope.rejectForum = function(forumId){
+		console.log('Entered into the rejectForum method');
+		console.log(forumId);
+		$http.put('http://localhost:8083/SChatMiddleWare/rejectForum/'+ forumId)
+		.then(fetchAllForums(), function(response){
+			console.log('Rejected forum'+ forumId+ ' successfully');
+			console.log(forumId +" rejected successfully");
+			$window.alert('Forum rejected successfully...');
+			fetchAllForums();
+			 $location.path("/updateForum"); 
+		});
+		
+	};
+	$rootScope.viewForum = function(forumId) {
+		console.log('Entered into the getForum method');
+		$http.get('http://localhost:8083/SChatMiddleWare/getForum/' + forumId)
+				.then( function(response) {
+					console.log('In get forum');
+					console.log(response.data);
+					$scope.forum=response.data;
+					$rootScope.singleForumData=response.data;
+					console.log($rootScope.singleForumData.forumId);
+					console.log('Status Text' + response.statusText);
+					$location.path('/SingleForum');					
+				});
+	};
+	$scope.fetchAllForumComments=function(forumId) {
+		console.log('Into Fetch All Forum Commments');
+		$http.get("http://localhost:8083/SChatMiddleWare/listForumComments/"+forumId).then(
+				function(response) {
+					console.log('Status text:' + response.statusText);
+					$scope.forumComments = response.data;
+					console.log(response.data);
+				});
+	};
+	$scope.addForumComment = function(forumId) {
+		console.log('Entered into the addForumComment method');
+		$scope.forumComment.loginname=$rootScope.currentUser.loginname;
+		$scope.forumComment.forumId=forumId;
+		$http.post("http://localhost:8083/SChatMiddleWare/addForumComment",
+						$scope.forumComment).then(function(response) {
+					console.log('Status text:' + response.statusText);
+					 $window.alert("Commented successfully");
+					 $window.location.reload();
+					 $location.path("/SingleForum"); 
+				});
 	};
 
 	fetchAllForums();
