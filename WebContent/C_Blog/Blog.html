@@ -19,15 +19,16 @@
 	font-size: 16px;
 	cursor: pointer;
 }
+
 body {
 	margin: 0;
 	padding: 0;
-	
 	font-size: 16px;
 	color: #222;
 	font-family: COTILLIO, sans-serif;
 	font-weight: 300;
 }
+
 #blog-box {
 	position: relative;
 	margin: 5% auto;
@@ -37,7 +38,6 @@ body {
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-
 /* Darker background on mouse-over */
 .btn:hover {
 	background-color: Black;
@@ -46,7 +46,8 @@ body {
 </head>
 <body ng-app="myApp">
 	<font color="white" face="verdana">
-		<div id="blog-box" class="container-fluid" ng-controller="BlogController">
+		<div id="blog-box" class="container-fluid"
+			ng-controller="BlogController">
 			<div class="row">
 				<div class="col-md-12">
 					<div>
@@ -55,7 +56,7 @@ body {
 							</h2>
 					</div>
 
-					<form role="form" mthod="post">
+					<form role="form" method="post">
 						<div class="form-group">
 							<label for="blogName"> Blog Name </label> <input type="text"
 								placeholder="Blog Name" name="blogName" ng-model="blog.blogName"
@@ -70,7 +71,8 @@ body {
 
 						</div>
 						<button type="submit" class="btn btn-primary" value="Insert Blog"
-							ng-Click="insertBlog()">Submit</button>
+							on-click="{{message}}" ng-Click="insertBlog()">Submit</button>
+						<input type="reset" class="btn btn-lg btn-default" value="Reset">
 					</form>
 					<form id="blogform" method="post">
 
@@ -89,7 +91,7 @@ body {
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="blog in blogData">
+								<tr ng-repeat="blog in blogData" >
 									<td>{{blog.blogId}}</td>
 									<td>{{blog.blogName}}</td>
 									<td>{{blog.blogContent}}</td>
@@ -101,17 +103,6 @@ body {
 											<i class="glyphicon glyphicon-thumbs-up"></i>
 										</button>
 									</td>
-									<!-- <button style="font-size:24px" class="btn btn-primary" ng-click="editBlog(blog.blogId)"><i class="fa fa-edit"></i></button>
-								<button class="btn" value="DELETE BLOG"
-									ng-click="deleteBlog(blog.blogId)"  ><i class="fa fa-trash"></i></button>
-								 -->
-
-									<!-- <input type="submit" class="btn btn-primary"
-									value="Update" ng-click="editBlog(blog.blogId)" />  
-									<input type="submit" class="btn btn-primary" value="DELETE BLOG"
-									ng-click="deleteBlog(blog.blogId)" />-->
-
-
 								</tr>
 							</tbody>
 						</table>
