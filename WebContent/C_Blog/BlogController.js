@@ -1,4 +1,4 @@
-myApp.controller("BlogController", function($scope, $http, $location,$rootScope, $window) {
+myApp.controller("BlogController", function($scope,$route, $http, $location,$rootScope, $window) {
 	$scope.blog = {
 			"blogId":0,
 		"blogName" : '',
@@ -17,7 +17,11 @@ myApp.controller("BlogController", function($scope, $http, $location,$rootScope,
 			"loginname" : '',
 			"status" : ''
 		}
+	
+	$scope.blogComment={"commentID":0,"blogId":'',"commentDate":'',"commentText":'',"username":''}
 	$scope.blogData;
+	$scope.blogComments;
+	$rootScope.message="Blog added successfully";
 
 	$scope.insertBlog = function() {
 		console.log('Entered into the insertBlog method');
@@ -26,6 +30,7 @@ myApp.controller("BlogController", function($scope, $http, $location,$rootScope,
 						$scope.blog).then(fetchAllBlogs(), function(response) {
 					console.log('Status text:' + response.statusText);
 					 $window.alert("Data inserted successfully");
+					 $location.path("/Blog"); 
 				});
 	};
 	function fetchAllBlogs() {
@@ -37,6 +42,20 @@ myApp.controller("BlogController", function($scope, $http, $location,$rootScope,
 					console.log(response.data);
 				});
 	};
+	$rootScope.viewBlog = function(blogId) {
+		console.log('Entered into the getBlog method');
+		$http.get('http://localhost:8083/SChatMiddleWare/getBlog/' + blogId)
+				.then( function(response) {
+					console.log('In get blog');
+					console.log(response.data);
+					$scope.blog=response.data;
+					$rootScope.singleBlogData=response.data;
+					console.log($rootScope.singleBlogData.blogId);
+					console.log('Status Text' + response.statusText);
+					$location.path('/SingleBlog');					
+				});
+	};
+
 	$scope.editBlog = function(blogId) {
 		console.log('Entered into the editBlog method');
 		$http.get('http://localhost:8083/SChatMiddleWare/getBlog/' + blogId)
@@ -57,7 +76,33 @@ myApp.controller("BlogController", function($scope, $http, $location,$rootScope,
 			console.log('updated blog'+ blogId+ ' successfully');
 			console.log(blogId +" updated successfully");
 			$window.alert('Blog updated successfully...');
-			 $location.path("/updateForum"); 
+			$location.path("/updateBlog"); 
+		});
+		
+	};
+	$scope.approveBlog = function(blogId){
+		console.log('Entered into the approveBlog method');
+		console.log(blogId);
+		$http.put('http://localhost:8083/SChatMiddleWare/approveBlog/'+ blogId)
+		.then(fetchAllBlogs(), function(response){
+			console.log('Approved blog'+ blogId+ ' successfully');
+			console.log(blogId +" updated successfully");
+			$window.alert('Blog approved successfully...');
+			fetchAllBlogs();
+			 $location.path("/updateBlog"); 
+		});
+		
+	};
+	$scope.rejectBlog = function(blogId){
+		console.log('Entered into the rejectBlog method');
+		console.log(blogId);
+		$http.put('http://localhost:8083/SChatMiddleWare/rejectBlog/'+ blogId)
+		.then(fetchAllBlogs(), function(response){
+			console.log('Rejected blog'+ blogId+ ' successfully');
+			console.log(blogId +" rejected successfully");
+			$window.alert('Blog rejected successfully...');
+			fetchAllBlogs();
+			 $location.path("/updateBlog"); 
 		});
 		
 	};
@@ -68,7 +113,7 @@ myApp.controller("BlogController", function($scope, $http, $location,$rootScope,
 			console.log('Blog deleted '+ blogId);
 			console.log('Response Status ' + response.statusText);
 			fetchAllBlogs();
-			$window.alert('Blog deleted successfully..');
+			alert('Blog deleted successfully..');
 			$location.path("/Blog");
 		});
 	};
@@ -80,8 +125,31 @@ myApp.controller("BlogController", function($scope, $http, $location,$rootScope,
 				function(response) {
 					console.log('Incremented likes');
 					fetchAllBlogs();
-					$location.path('/Blog')
+					$location.path('/viewBlog');
+					
 				});
 	}
-	fetchAllBlogs();
+	
+	$scope.fetchAllBlogComments=function(blogId) {
+		console.log('Into Fetch All Blog Commments');
+		$http.get("http://localhost:8083/SChatMiddleWare/listBlogComments/"+blogId).then(
+				function(response) {
+					console.log('Status text:' + response.statusText);
+					$scope.blogComments = response.data;
+					console.log(response.data);
+				});
+	};
+	$scope.addBlogComment = function(blogId) {
+		console.log('Entered into the addBlogComment method');
+		$scope.blogComment.username=$rootScope.currentUser.loginname;
+		$scope.blogComment.blogId=blogId;
+		$http.post("http://localhost:8083/SChatMiddleWare/addBlogComment",
+						$scope.blogComment).then(function(response) {
+					console.log('Status text:' + response.statusText);
+					 $window.alert("Commented successfully");
+					 $window.location.reload();
+					 $location.path("/SingleBlog"); 
+				});
+	};
+		fetchAllBlogs();
 });
